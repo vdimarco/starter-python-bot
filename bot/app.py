@@ -20,7 +20,7 @@ if __name__ == "__main__":
     log_level = os.getenv("LOG_LEVEL", "INFO")
     logging.basicConfig(format='%(asctime)s - %(levelname)s: %(message)s', level=log_level)
 
-    config = yaml.load(file('rtmbot.conf', 'r'))
+    config = yaml.load(file('bot.conf', 'r'))
     # debug = config["DEBUG"]
 
     slack_token = config["SLACK_TOKEN"]
