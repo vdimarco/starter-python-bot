@@ -2,12 +2,15 @@
 
 import logging
 import os
+import yaml
 
 from beepboop import resourcer
 from beepboop import bot_manager
 
 from slack_bot import SlackBot
 from slack_bot import spawn_bot
+
+
 
 logger = logging.getLogger(__name__)
 
@@ -17,7 +20,10 @@ if __name__ == "__main__":
     log_level = os.getenv("LOG_LEVEL", "INFO")
     logging.basicConfig(format='%(asctime)s - %(levelname)s: %(message)s', level=log_level)
 
-    slack_token = os.getenv("SLACK_TOKEN", "")
+    config = yaml.load(file('rtmbot.conf', 'r'))
+    # debug = config["DEBUG"]
+
+    slack_token = config["SLACK_TOKEN"]
     logging.info("token: {}".format(slack_token))
 
     if slack_token == "":
